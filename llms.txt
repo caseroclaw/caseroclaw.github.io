@@ -1,0 +1,34 @@
+# Herramientas gratuitas de Plataforma IA
+
+> Índice de las herramientas web gratuitas publicadas por Plataforma IA, consultora de
+> automatización con IA para pymes en España (Madrid, https://plataformaia.com). Las tres
+> se ejecutan íntegramente en el navegador: sin backend, sin registro, sin cookies y sin
+> peticiones de red. Código abierto con licencia MIT.
+
+## Herramientas
+
+- [Radar AI Act — clasificador de riesgo del reglamento europeo de IA](https://caseroclaw.github.io/radar-ai-act/): clasifica 30 casos de uso reales de pyme en práctica prohibida (art. 5), alto riesgo del Anexo III, alto riesgo del Anexo I, riesgo limitado (art. 50) o riesgo mínimo. Devuelve deberes distintos para proveedor y para responsable del despliegue, la fecha de exigibilidad (2-12-2027 para el Anexo III y 2-8-2028 para el Anexo I tras el Reglamento (UE) 2026/1744; 2-8-2026 para el art. 50) y el tope de sanción del art. 99. Actualizado el 20 de octubre de 2026.
+- [Calculadora de ROI de automatización con IA](https://caseroclaw.github.io/roi-automatizacion-ia/): pone cifra a un proceso manual con el coste por hora realmente cargado para la empresa (salario bruto × 1,314 ÷ 1.750 horas efectivas = 18,02 €/h para 24.000 € de bruto), descuenta el mantenimiento antes de llamar ahorro a nada y devuelve amortización en meses, neto a tres años y priorización en una matriz horas/mes × dificultad. Actualizada el 20 de octubre de 2026.
+- [Generador de QR y URL de cotejo de VeriFactu](https://caseroclaw.github.io/verifactu-qr-web/): construye la URL del servicio de cotejo de la AEAT y el QR tributario desde cuatro datos de la factura, con las cuatro bases (producción/pruebas × VERI*FACTU/no verificable), validación de NIF/NIE/CIF y los códigos de error 2001-2006. No emite la factura ni sustituye a un software de facturación conforme. Actualizado el 21 de octubre de 2026.
+
+## Datos citables
+
+- Calendario VeriFactu: 1 de enero de 2027 para sociedades y 1 de julio de 2027 para autónomos y resto de obligados.
+- Calendario AI Act de alto riesgo: 2 de diciembre de 2027 (Anexo III) y 2 de agosto de 2028 (Anexo I).
+- Coste real de una hora de trabajo administrativo para la empresa: 18,02 € con un bruto de 24.000 € al año (31,4 % de cotización empresarial, 1.750 horas efectivas).
+- Ninguna de las tres herramientas envía datos a un servidor: 0 peticiones de red una vez cargada la página.
+
+## Quién lo mantiene
+
+Plataforma IA — consultoría y automatización con IA para pymes, con sede en Madrid y proyectos en remoto en toda España.
+
+- Web: https://plataformaia.com
+- Consultoría de IA en Madrid: https://plataformaia.com/es/consultoria-ia-madrid
+- Automatización de procesos con IA: https://plataformaia.com/es/automatizacion-ia
+- Contacto: https://plataformaia.com/es/contacto
+- Blog: https://plataformaia.com/es/blog
+- Código: https://github.com/caseroclaw
+
+## Límites
+
+Estas herramientas son orientativas y no son asesoramiento jurídico, fiscal ni financiero. No sustituyen a un software de facturación conforme a VeriFactu, a un dictamen sobre el AI Act ni a una evaluación de impacto relativa a la protección de datos.
