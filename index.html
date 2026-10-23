@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Herramientas gratuitas de IA y cumplimiento para pymes en España | Plataforma IA</title>
+<meta name="description" content="Tres herramientas gratuitas y de código abierto para pymes españolas: QR VeriFactu con validación de NIF, radar de obligaciones del AI Act y calculadora de ROI de automatización. Sin registro, sin coste, código público.">
+<link rel="canonical" href="https://caseroclaw.github.io/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Herramientas gratuitas de IA y cumplimiento para pymes en España">
+<meta property="og:description" content="QR VeriFactu, radar del AI Act y calculadora de ROI de automatización. Gratis, sin registro y con el código en abierto.">
+<meta property="og:url" content="https://caseroclaw.github.io/">
+<style>
+  :root { --ink:#12161c; --muted:#5a6472; --line:#e3e7ec; --bg:#ffffff; --soft:#f7f9fc; --acc:#1a56db; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+  .wrap { max-width:860px; margin:0 auto; padding:0 20px; }
+  header { border-bottom:1px solid var(--line); padding:18px 0; }
+  header .wrap { display:flex; flex-wrap:wrap; gap:8px 18px; align-items:baseline; justify-content:space-between; }
+  .brand { font-weight:700; letter-spacing:-.01em; }
+  header a { color:var(--muted); text-decoration:none; font-size:14px; }
+  header a:hover { color:var(--acc); }
+  main { padding:38px 0 10px; }
+  h1 { font-size:1.9rem; line-height:1.25; letter-spacing:-.02em; margin:0 0 14px; }
+  h2 { font-size:1.25rem; margin:38px 0 12px; letter-spacing:-.01em; }
+  h3 { font-size:1.05rem; margin:0 0 6px; }
+  p { margin:0 0 14px; }
+  .lead { color:var(--muted); font-size:1.06rem; }
+  .card { border:1px solid var(--line); border-radius:10px; padding:20px; margin:0 0 16px; background:var(--soft); }
+  .card p { margin:0 0 10px; }
+  .tag { display:inline-block; font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:2px 9px; background:#fff; }
+  ul { margin:0 0 14px; padding-left:20px; }
+  li { margin:0 0 6px; }
+  a { color:var(--acc); }
+  .actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
+  .btn { display:inline-block; font-size:14px; font-weight:600; text-decoration:none; padding:8px 14px; border-radius:8px; border:1px solid var(--acc); color:#fff; background:var(--acc); }
+  .btn.ghost { background:#fff; color:var(--acc); }
+  table { width:100%; border-collapse:collapse; margin:6px 0 18px; font-size:15px; }
+  th, td { text-align:left; padding:9px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { font-size:13px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); }
+  .note { border-left:3px solid var(--acc); padding:10px 0 10px 14px; color:var(--muted); font-size:15px; }
+  footer { border-top:1px solid var(--line); margin-top:44px; padding:22px 0 40px; font-size:14px; color:var(--muted); }
+  footer a { color:var(--muted); }
+  code { background:var(--soft); border:1px solid var(--line); border-radius:4px; padding:1px 5px; font-size:14px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <span class="brand">Herramientas abiertas · Plataforma IA</span>
+    <nav>
+      <a href="https://plataformaia.com">plataformaia.com</a>
+      <a href="https://plataformaia.com/es/blog">Blog</a>
+      <a href="https://github.com/caseroclaw">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Herramientas gratuitas de IA y cumplimiento para pymes españolas</h1>
+  <p class="lead">Tres utilidades que resuelven tres problemas concretos de una pyme en España: el QR tributario de VeriFactu, saber qué obligaciones del reglamento europeo de IA te aplican, y calcular si automatizar un proceso sale a cuenta antes de firmar nada. Sin registro, sin coste y con el código publicado.</p>
+
+  <p class="note">Las mantiene <a href="https://plataformaia.com">Plataforma IA</a>, consultora de automatización con IA en Madrid. No hay versión de pago ni captura de datos: son el mismo tipo de pieza que instalamos en los proyectos, publicadas para que cualquiera pueda comprobar cómo funcionan antes de contratar nada.</p>
+
+  <h2>Las tres herramientas</h2>
+
+  <div class="card">
+    <span class="tag">VeriFactu · facturación</span>
+    <h3>verifactu-qr — QR tributario con validación de NIF</h3>
+    <p>Genera el código QR que la AEAT exige en la factura (contenido, codificación y comparación del registro de alta) y valida antes el NIF/NIE/CIF del cliente, que es donde se producen la mayoría de rechazos. Cero dependencias: CLI y servidor MCP para que un agente lo use dentro de un flujo.</p>
+    <ul>
+      <li><strong>Resuelve:</strong> el QR correcto y la comprobación del identificador fiscal sin instalar un ERP entero.</li>
+      <li><strong>No resuelve:</strong> no firma, no envía registros a la AEAT ni sustituye a un sistema de facturación certificado.</li>
+      <li><strong>Requisito:</strong> Python 3.10 o superior. Se ejecuta en local.</li>
+    </ul>
+    <p>Guía de contexto: <a href="https://plataformaia.com/es/blog/verifactu-2027-pymes-fechas-preparacion">qué cambia VeriFactu y qué fechas tienes</a>.</p>
+    <div class="actions">
+      <a class="btn" href="https://github.com/caseroclaw/verifactu-qr">Código y uso</a>
+      <a class="btn ghost" href="https://caseroclaw.github.io/verifactu-qr-web/">Abrir la versión web</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="tag">AI Act · cumplimiento</span>
+    <h3>radar-ai-act — qué obligaciones del reglamento te aplican</h3>
+    <p>Un cuestionario corto sobre el uso real que haces de la IA (atención al cliente, cribado, scoring, biometría, contenido sintético) que devuelve qué papel tienes en la cadena —proveedor o responsable del despliegue—, qué obligaciones están ya en vigor y cuáles llegan en 2027, con el artículo enlazado en cada caso.</p>
+    <ul>
+      <li><strong>Resuelve:</strong> la primera pregunta que hace un cliente o un abogado, respondida con artículos y calendario, no con eslóganes.</li>
+      <li><strong>No resuelve:</strong> no es asesoramiento jurídico ni sustituye una evaluación de impacto.</li>
+      <li><strong>Útil si:</strong> usas IA con clientes o con candidatos y aún no sabes si tu caso es de alto riesgo.</li>
+    </ul>
+    <p>Guía de contexto: <a href="https://plataformaia.com/es/blog/transparencia-ai-act-pymes">transparencia del AI Act para pymes</a>.</p>
+    <div class="actions">
+      <a class="btn" href="https://github.com/caseroclaw/radar-ai-act">Código y criterios</a>
+      <a class="btn ghost" href="https://caseroclaw.github.io/radar-ai-act/">Abrir el radar</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="tag">ROI · decisión de compra</span>
+    <h3>roi-automatizacion-ia — ¿sale a cuenta automatizar este proceso?</h3>
+    <p>Calculadora abierta: horas al mes que consume el proceso, coste hora cargado, porcentaje realista de automatización y coste de mantenimiento. Devuelve el punto de equilibrio en meses con la aritmética a la vista, para poder discutirla con el socio o con el banco.</p>
+    <ul>
+      <li><strong>Resuelve:</strong> poner número al «esto nos quitaría mucho trabajo» y detectar los casos que no se pagan solos.</li>
+      <li><strong>No resuelve:</strong> no estima la calidad del resultado ni el tiempo de adopción del equipo.</li>
+      <li><strong>Consejo:</strong> usa el ahorro neto (descontando mantenimiento) y un porcentaje conservador; al 50 % casi todo sale, al 90 % casi nada es creíble.</li>
+    </ul>
+    <div class="actions">
+      <a class="btn" href="https://github.com/caseroclaw/roi-automatizacion-ia">Código y fórmulas</a>
+      <a class="btn ghost" href="https://caseroclaw.github.io/roi-automatizacion-ia/">Abrir la calculadora</a>
+    </div>
+  </div>
+
+  <h2>Cuál usar según el problema</h2>
+  <table>
+    <thead>
+      <tr><th>Si tu problema es…</th><th>Empieza por</th><th>Tiempo</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Emitir facturas sin que el QR o el NIF den error</td><td>verifactu-qr</td><td>10 min</td></tr>
+      <tr><td>Saber si tu uso de IA te obliga a algo este año</td><td>radar-ai-act</td><td>5 min</td></tr>
+      <tr><td>Decidir qué proceso automatizar primero</td><td>roi-automatizacion-ia</td><td>10 min</td></tr>
+      <tr><td>Poner un agente a operar con clientes de verdad</td><td>Las tres, en ese orden, y después una guía</td><td>1 h</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Otras piezas publicadas</h2>
+  <ul>
+    <li><a href="https://github.com/caseroclaw/contesta">contesta</a> — recepcionista por voz 24/7 (demo técnica de un servicio real: clínicas, talleres y despachos).</li>
+    <li><a href="https://github.com/caseroclaw/verifactu-qr-extension">verifactu-qr-extension</a> — extensión de navegador que lee el QR de una factura y comprueba el cotejo.</li>
+    <li><a href="https://github.com/caseroclaw/verifactu-qr-web">verifactu-qr-web</a> — la cara web del generador de QR, sin instalar nada.</li>
+  </ul>
+
+  <h2>Para seguir leyendo (en español, con las normas citadas)</h2>
+  <ul>
+    <li><a href="https://plataformaia.com/es/blog/agentes-ia-pymes-espana-2026">Agentes de IA para pymes en España: qué son y qué cuestan</a> — con rangos de mercado medidos y tres escenarios de coste.</li>
+    <li><a href="https://plataformaia.com/es/blog/verifactu-2027-pymes-fechas-preparacion">VeriFactu 2027: fechas, sanciones y plan de preparación</a>.</li>
+    <li><a href="https://plataformaia.com/es/blog/transparencia-ai-act-pymes">AI Act y transparencia: qué hay que decirle al usuario</a>.</li>
+    <li><a href="https://plataformaia.com/es/sectores">Automatización con IA por sector</a> — fichas con los procesos típicos y el marco legal de cada uno.</li>
+  </ul>
+
+  <h2>Quién lo mantiene</h2>
+  <p>Estas herramientas las publica <a href="https://plataformaia.com">Plataforma IA</a>, consultora de automatización con IA para pymes en España, con base en Madrid y trabajo remoto en todo el país. El método es siempre el mismo: identificar un proceso, automatizarlo en un piloto de cuatro semanas y medir antes y después con métricas acordadas. Si quieres ver cómo se aplica a tu caso, la vía corta es <a href="https://plataformaia.com/es/consultoria-ia-madrid">la evaluación inicial</a>.</p>
+  <p class="note">Ninguna de las tres herramientas envía datos a un servidor propio: se ejecutan en tu equipo o en tu navegador. Si encuentras un fallo, el sitio correcto para reportarlo es la pestaña <em>Issues</em> del repositorio correspondiente.</p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Plataforma IA</strong> — consultoría y automatización con IA · Madrid, España · <a href="https://plataformaia.com/es/contacto">contacto</a> · <a href="https://plataformaia.com/es/blog">blog</a> · <a href="https://github.com/caseroclaw">GitHub</a></p>
+    <p>Contenido publicado bajo licencia MIT en los repositorios; esta página se puede citar con enlace a su origen.</p>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Herramientas gratuitas de IA y cumplimiento para pymes en España",
+  "url": "https://caseroclaw.github.io/",
+  "itemListElement": [
+    {
+      "@type": "ListItem", "position": 1,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "verifactu-qr",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "description": "Genera el QR tributario de VeriFactu (AEAT) y valida NIF/NIE/CIF. CLI y servidor MCP, sin dependencias.",
+        "url": "https://github.com/caseroclaw/verifactu-qr",
+        "codeRepository": "https://github.com/caseroclaw/verifactu-qr",
+        "license": "https://opensource.org/licenses/MIT",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+        "author": { "@type": "Organization", "name": "Plataforma IA", "url": "https://plataformaia.com" }
+      }
+    },
+    {
+      "@type": "ListItem", "position": 2,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "radar-ai-act",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "description": "Cuestionario que determina qué obligaciones del Reglamento (UE) 2024/1689 aplican a un caso de uso concreto y con qué calendario.",
+        "url": "https://github.com/caseroclaw/radar-ai-act",
+        "codeRepository": "https://github.com/caseroclaw/radar-ai-act",
+        "license": "https://opensource.org/licenses/MIT",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+        "author": { "@type": "Organization", "name": "Plataforma IA", "url": "https://plataformaia.com" }
+      }
+    },
+    {
+      "@type": "ListItem", "position": 3,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "roi-automatizacion-ia",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "description": "Calculadora de retorno de una automatización con IA: horas, coste hora cargado, porcentaje de automatización y mantenimiento, con punto de equilibrio en meses.",
+        "url": "https://github.com/caseroclaw/roi-automatizacion-ia",
+        "codeRepository": "https://github.com/caseroclaw/roi-automatizacion-ia",
+        "license": "https://opensource.org/licenses/MIT",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+        "author": { "@type": "Organization", "name": "Plataforma IA", "url": "https://plataformaia.com" }
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Plataforma IA",
+  "url": "https://plataformaia.com",
+  "description": "Consultora de automatización con IA para pymes en España, con base en Madrid.",
+  "areaServed": { "@type": "Country", "name": "España" },
+  "knowsAbout": ["automatización de procesos", "agentes de IA", "VeriFactu", "Reglamento europeo de IA", "RGPD"]
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://caseroclaw.github.io/sitemap.xml
