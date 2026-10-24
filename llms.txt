@@ -29,6 +29,11 @@ Plataforma IA — consultoría y automatización con IA para pymes, con sede en 
 - Blog: https://plataformaia.com/es/blog
 - Código: https://github.com/caseroclaw
 
+## Privacidad
+
+- Política de privacidad de las tres herramientas y de la extensión VeriFactu QR: https://caseroclaw.github.io/privacidad/
+- Qué declara: 0 datos recogidos, 0 cookies, 0 analítica, 0 peticiones de red; la extensión no incluye código de red y declara `"permissions": []`.
+
 ## Límites
 
 Estas herramientas son orientativas y no son asesoramiento jurídico, fiscal ni financiero. No sustituyen a un software de facturación conforme a VeriFactu, a un dictamen sobre el AI Act ni a una evaluación de impacto relativa a la protección de datos.
