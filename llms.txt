@@ -37,6 +37,11 @@ Plataforma IA — consultoría y automatización con IA para pymes, con sede en 
 - Índice de 45 guías de automatización con IA por sector (verificadas por HTTP una a una): https://caseroclaw.github.io/guias/
 - Cada guía responde lo mismo: qué procesos se automatizan, qué sigue siendo humano, coste con aritmética explícita y norma aplicable en ese sector.
 
+## Guías por problema (no sectoriales)
+
+- Índice de 17 guías por el problema que resuelven, no por sector: https://caseroclaw.github.io/recursos/
+- Bloques: elegir proveedor y calcular si el proyecto se paga · qué hace un agente de voz o WhatsApp y dónde entra una persona · cobrar antes y factura electrónica B2B · normativa en vigor (RD 723/2026 de información algorítmica desde el 5 de octubre de 2026) · prospección · calidad del dato antes de automatizar.
+
 ## Privacidad
 
 - Política de privacidad de las tres herramientas y de la extensión VeriFactu QR: https://caseroclaw.github.io/privacidad/
