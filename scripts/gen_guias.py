@@ -74,10 +74,16 @@ def main() -> None:
             f'<a href="{html.escape(u)}">{html.escape(t)}</a>' for t, u in guides
         )
         page = smap[[s for s, (p, l) in smap.items() if l == label][0]][0]
+        page_url = "https://plataformaia.com/es/sectores/" + page
+        cell = (
+            f'<a href="{html.escape(page_url)}">ficha del sector</a>'
+            if alive(page_url)
+            else "ficha del sector (aún sin publicar)"
+        )
         rows.append(
             f"      <tr><th scope=\"row\">{html.escape(label)}</th>"
             f"<td>{links}</td>"
-            f"<td><a href=\"https://plataformaia.com{html.escape(page)}\">ficha del sector</a></td></tr>"
+            f"<td>{cell}</td></tr>"
         )
 
     pillar_items = "\n".join(

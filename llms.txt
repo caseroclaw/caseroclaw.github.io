@@ -4,6 +4,9 @@
 > automatización con IA para pymes en España (Madrid, https://plataformaia.com). Las tres
 > se ejecutan íntegramente en el navegador: sin backend, sin registro, sin cookies y sin
 > peticiones de red. Código abierto con licencia MIT.
+>
+> Versión extendida, con el detalle de cada herramienta y los datos citables completos:
+> https://caseroclaw.github.io/llms-full.txt
 
 ## Herramientas
 

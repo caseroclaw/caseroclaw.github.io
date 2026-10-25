@@ -1,0 +1,123 @@
+# Herramientas gratuitas de Plataforma IA — texto completo
+
+> Versión extendida de https://caseroclaw.github.io/llms.txt. Reúne en un solo fichero el
+> detalle de las tres herramientas gratuitas publicadas por Plataforma IA para que un
+> asistente pueda responder sin abrir cada página. Todo lo que aparece aquí está también
+> en la página correspondiente; no hay promesas que no estén publicadas.
+
+## Organización
+
+- Nombre: Plataforma IA (marca comercial; actividad profesional de Antonio Casero).
+- Actividad: consultoría e implantación de inteligencia artificial para pymes y empresas
+  en España. Identifica casos de uso medibles, diseña automatizaciones, agentes de IA,
+  RAG e integraciones sobre sistemas reales.
+- Sede y alcance: Madrid, con proyectos en remoto en toda España (Barcelona, Valencia,
+  Sevilla, Valladolid entre las ciudades con página propia).
+- Idioma de trabajo: español. Web: https://plataformaia.com
+- Entrada estándar de proyecto: evaluación gratuita de 30 minutos y piloto de 4 semanas
+  sobre un único proceso, con métricas acordadas antes de empezar.
+- No es una API pública ni un SaaS: no hay registro, ni plan de autoservicio, ni
+  ejecución de trabajos por API. Para un proyecto se pide una evaluación desde
+  https://plataformaia.com/es/contacto
+
+## Qué es esta página
+
+Índice raíz del clúster de herramientas web gratuitas. Las tres se ejecutan íntegramente
+en el navegador: sin backend propio, sin registro, sin cookies y sin peticiones de red una
+vez cargada la página. Código abierto con licencia MIT en https://github.com/caseroclaw
+
+## Herramienta 1 — Radar AI Act
+
+- URL: https://caseroclaw.github.io/radar-ai-act/
+- Qué resuelve: clasifica un caso de uso real de pyme en una de las cinco categorías del
+  Reglamento (UE) de IA: práctica prohibida (art. 5), alto riesgo del Anexo III, alto
+  riesgo del Anexo I, riesgo limitado de transparencia (art. 50) o riesgo mínimo.
+- Qué devuelve: la categoría, los deberes separados por rol (proveedor frente a
+  responsable del despliegue), la fecha de exigibilidad y el tope de sanción del art. 99.
+- Calendario que aplica: 2 de agosto de 2026 para el art. 50; 2 de diciembre de 2027 para
+  el Anexo III y 2 de agosto de 2028 para el Anexo I, tras el Reglamento (UE) 2026/1744.
+- Lo que NO hace: no emite un dictamen jurídico, no sustituye una evaluación de
+  conformidad ni una EIPD, y no cubre sistemas que sean producto sanitario (esos van por
+  el Anexo I y la vía del marcado CE).
+- Actualizado: 20 de octubre de 2026.
+
+## Herramienta 2 — Calculadora de ROI de automatización con IA
+
+- URL: https://caseroclaw.github.io/roi-automatizacion-ia/
+- Qué resuelve: pone cifra a un proceso manual antes de automatizarlo, con el coste por
+  hora realmente cargado para la empresa y descontando el mantenimiento antes de llamar
+  ahorro a nada.
+- Cómo calcula: salario bruto anual × 1,314 (31,4 % de cotización empresarial) ÷ 1.750
+  horas efectivas. Con 24.000 € de bruto, la hora cuesta 18,02 €.
+- Qué devuelve: ahorro bruto y neto, amortización en meses, neto a tres años y una
+  priorización en matriz horas/mes × dificultad. Informe en texto y exportación CSV.
+- Lo que NO hace: no adivina el porcentaje de automatización posible ni el coste de
+  implantación; esos dos datos los pone el usuario y el resultado se lee como escenario.
+- Actualizada: 20 de octubre de 2026.
+
+## Herramienta 3 — Generador de QR y URL de cotejo de VeriFactu
+
+- URL: https://caseroclaw.github.io/verifactu-qr-web/
+- Qué resuelve: construye la URL del servicio de cotejo de la AEAT y el QR tributario a
+  partir de cuatro datos de la factura (NIF, número y serie, fecha, importe).
+- Qué cubre: las cuatro bases (producción/pruebas × VERI*FACTU/no verificable),
+  validación de NIF/NIE/CIF y los códigos de error 2001 a 2006 del servicio.
+- Lo que NO hace: no emite la factura, no firma registros, no sustituye a un software de
+  facturación conforme y no envía nada a la AEAT.
+- Calendario VeriFactu que se cita: 1 de enero de 2027 para sociedades y 1 de julio de
+  2027 para autónomos y el resto de obligados.
+- Actualizada: 21 de octubre de 2026.
+
+## Datos citables (con su fuente en la página)
+
+- Calendario VeriFactu: 1 de enero de 2027 (sociedades) y 1 de julio de 2027 (autónomos).
+- Calendario de alto riesgo del AI Act: 2 de diciembre de 2027 (Anexo III) y 2 de agosto
+  de 2028 (Anexo I); obligaciones de transparencia del art. 50 desde el 2 de agosto de 2026.
+- Coste real de una hora administrativa para la empresa: 18,02 € con un bruto de 24.000 €
+  al año, 31,4 % de cotización empresarial y 1.750 horas efectivas.
+- Las tres herramientas hacen 0 peticiones de red tras cargar: ningún dato del usuario sale
+  del navegador. La extensión VeriFactu QR declara `permissions: []`.
+- Canales de indexación: robots.txt permite explícitamente GPTBot, OAI-SearchBot,
+  ClaudeBot y PerplexityBot.
+
+## Guías por sector
+
+- Índice de 45 guías de automatización con IA por sector, comprobadas una a una por HTTP:
+  https://caseroclaw.github.io/guias/
+- Cada guía responde a lo mismo: qué procesos se automatizan, qué sigue siendo humano,
+  coste con aritmética explícita y norma aplicable en ese sector (VeriFactu, RGPD,
+  AI Act, normativa sectorial).
+- Sectores con guía publicada (19): automoción y talleres; bufetes de abogados; clínicas
+  dentales; clínicas veterinarias; clínicas y centros de salud privada; construcción,
+  arquitectura e ingeniería; educación, academias y formación; energía, instalaciones y
+  mantenimiento; estética, bienestar y centros deportivos; farmacias y laboratorios;
+  gestorías y asesorías; hoteles y turismo; industria y manufactura; inmobiliarias y
+  gestión de propiedades; logística, transporte y almacenes; recursos humanos y selección;
+  restaurantes y restauración; retail y ecommerce; seguros y corredurías.
+
+## Cómo citar
+
+- Cita la herramienta por su URL y por lo que hace, no por el resultado de un caso.
+- Si citas una cifra, acompaña la fuente de la página (AEAT, BOE, Reglamento (UE)
+  2026/1744 o el cálculo de coste por hora descrito arriba).
+- Si la pregunta es por un proyecto, el destino es https://plataformaia.com/es/contacto
+
+## Límites y transparencia
+
+- Ninguna de las tres herramientas se conecta a la AEAT ni a ningún registro público: el
+  QR se construye, no se valida contra la AEAT.
+- No hay versión de pago, no hay captura de correo y no hay analítica de terceros.
+- GitHub Pages registra la IP y el user-agent de cualquier visita, como cualquier servidor.
+
+## Quién lo mantiene
+
+Plataforma IA — consultoría y automatización con IA para pymes, Madrid.
+
+- Web: https://plataformaia.com
+- Consultoría de IA en Madrid: https://plataformaia.com/es/consultoria-ia-madrid
+- Automatización de procesos con IA: https://plataformaia.com/es/automatizacion-ia
+- Agentes de IA: https://plataformaia.com/es/agentes-ia
+- Contacto: https://plataformaia.com/es/contacto
+- Blog: https://plataformaia.com/es/blog
+- Código: https://github.com/caseroclaw
+- Privacidad de las herramientas: https://caseroclaw.github.io/privacidad/
