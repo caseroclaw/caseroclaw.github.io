@@ -71,11 +71,13 @@ def main() -> None:
     smap = sector_map()
     groups: dict[str, list[tuple[str, str]]] = {}
     dead = []
+    live_pages: set[str] = set()
     for slug, (page, label) in sorted(smap.items()):
         url = BASE + slug
         if not alive(url):
             dead.append(slug)
             continue
+        live_pages.add(page)
         groups.setdefault(label, []).append((title_of(slug), url))
     total = sum(len(v) for v in groups.values())
     today = date.today().isoformat()
@@ -104,7 +106,7 @@ def main() -> None:
         for p, t, d in PILLARS
     )
 
-    used_pages = {p for p, _ in smap.values()}
+    used_pages = live_pages
     extras = []
     for slug, label, desc in EXTRA_SECTORS:
         if slug in used_pages:
