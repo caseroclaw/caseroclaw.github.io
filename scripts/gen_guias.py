@@ -32,6 +32,19 @@ PILLARS = [
     ("/es/sectores", "IA por sector", "las 24 fichas sectoriales con procesos, límites legales y preguntas frecuentes."),
 ]
 
+# Fichas sectoriales publicadas que todavía no tienen guía del blog: sin este bloque
+# se quedan sin un solo enlace externo (medido 2026-10-26: 4 fichas a 0).
+EXTRA_SECTORS = [
+    ("banca-fintech-servicios-financieros", "Banca, fintech y servicios financieros",
+     "riesgo, cumplimiento, PSD2 y DORA en una entidad pequeña."),
+    ("consultoria-servicios-profesionales", "Consultoría y servicios profesionales",
+     "propuestas, proyectos, conocimiento y entregables de una firma."),
+    ("marketing-agencias-medios", "Marketing, agencias y medios",
+     "investigación, producción, campañas y operaciones editoriales con control humano."),
+    ("tecnologia-saas-telecomunicaciones", "Tecnología, SaaS y telecomunicaciones",
+     "soporte, fiabilidad, producto, seguridad y operaciones de servicios digitales."),
+]
+
 
 def sector_map() -> dict[str, tuple[str, str]]:
     src = (BLOG / "tools" / "internal_links.py").read_text(encoding="utf-8")
@@ -89,6 +102,27 @@ def main() -> None:
     pillar_items = "\n".join(
         f'      <li><a href="https://plataformaia.com{p}">{html.escape(t)}</a> — {html.escape(d)}</li>'
         for p, t, d in PILLARS
+    )
+
+    used_pages = {p for p, _ in smap.values()}
+    extras = []
+    for slug, label, desc in EXTRA_SECTORS:
+        if slug in used_pages:
+            continue
+        url = "https://plataformaia.com/es/sectores/" + slug
+        if alive(url):
+            extras.append((url, label, desc))
+    extra_items = "\n".join(
+        f'      <li><a href="{html.escape(u)}">{html.escape(t)}</a> — {html.escape(d)}</li>'
+        for u, t, d in extras
+    )
+    extra_block = (
+        "  <h2>Otros sectores con ficha publicada</h2>\n"
+        f"  <p>Estos {len(extras)} sectores ya tienen ficha de servicio con procesos, límites legales y preguntas frecuentes, "
+        "pero todavía no tienen guía larga en el blog. Se enlazan igual: la ficha es la página que explica qué se hace y qué no.</p>\n"
+        f"  <ul>\n{extra_items}\n  </ul>\n"
+        if extras
+        else ""
     )
 
     doc = f"""<!DOCTYPE html>
@@ -151,6 +185,7 @@ def main() -> None:
 {pillar_items}
   </ul>
 
+{extra_block}
   <h2>Cómo leer estas guías</h2>
   <p>Ninguna promete un ahorro sin medirlo. Todas separan tres cosas que suelen mezclarse en las propuestas comerciales: lo que la IA hace sola, lo que hace con una persona revisando y lo que no debe tocarse. Y todas traen el coste con aritmética explícita —horas al mes, coste real de la hora y meses de amortización— para que puedas comprobar la cuenta con tus propios números.</p>
   <p>Si tu sector no está, <a href="https://plataformaia.com/es/contacto">escríbenos</a>: la guía se escribe cuando hay una pregunta real que responder, no para llenar el índice.</p>
