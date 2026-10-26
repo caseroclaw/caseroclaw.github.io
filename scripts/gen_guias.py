@@ -45,6 +45,21 @@ EXTRA_SECTORS = [
      "soporte, fiabilidad, producto, seguridad y operaciones de servicios digitales."),
 ]
 
+# Páginas de ciudad: las cuatro que no son Madrid tenían 0 enlaces externos
+# (medido 2026-10-26 en el HTML servido de /, /guias/, /recursos/, llms*.txt).
+CITIES = [
+    ("consultoria-ia-madrid", "Madrid",
+     "sede y trabajo presencial; piloto de 4 semanas con las métricas cerradas antes de empezar."),
+    ("consultoria-ia-barcelona", "Barcelona",
+     "pymes de servicios, industria y tecnología; sesiones en remoto y piloto a distancia."),
+    ("consultoria-ia-valencia", "Valencia",
+     "pymes industriales, agroalimentarias y de servicios; el mismo método, en remoto."),
+    ("consultoria-ia-sevilla", "Sevilla",
+     "pymes de servicios, turismo y distribución; el mismo método, en remoto."),
+    ("consultoria-ia-valladolid", "Valladolid",
+     "pymes industriales y agroalimentarias; el mismo método, en remoto."),
+]
+
 
 def sector_map() -> dict[str, tuple[str, str]]:
     src = (BLOG / "tools" / "internal_links.py").read_text(encoding="utf-8")
@@ -127,6 +142,26 @@ def main() -> None:
         else ""
     )
 
+    city_items = []
+    for slug, label, desc in CITIES:
+        url = "https://plataformaia.com/es/" + slug
+        if alive(url):
+            city_items.append((url, label, desc))
+    city_block = (
+        "  <h2>Consultoría por ciudad</h2>\n"
+        f"  <p>{len(city_items)} páginas explican el mismo método aplicado a pymes de cada ciudad. "
+        "Trabajamos desde Madrid: presencial en Madrid y en remoto para toda España; en el resto de ciudades "
+        "no hay oficina y la página lo dice.</p>\n"
+        "  <ul>\n"
+        + "\n".join(
+            f'    <li><a href="{html.escape(u)}">Consultoría de IA en {html.escape(t)}</a> — {html.escape(d)}</li>'
+            for u, t, d in city_items
+        )
+        + "\n  </ul>\n"
+        if city_items
+        else ""
+    )
+
     doc = f"""<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -187,6 +222,7 @@ def main() -> None:
 {pillar_items}
   </ul>
 
+{city_block}
 {extra_block}
   <h2>Cómo leer estas guías</h2>
   <p>Ninguna promete un ahorro sin medirlo. Todas separan tres cosas que suelen mezclarse en las propuestas comerciales: lo que la IA hace sola, lo que hace con una persona revisando y lo que no debe tocarse. Y todas traen el coste con aritmética explícita —horas al mes, coste real de la hora y meses de amortización— para que puedas comprobar la cuenta con tus propios números.</p>
