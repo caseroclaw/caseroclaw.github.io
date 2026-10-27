@@ -82,15 +82,41 @@ def alive(url: str) -> bool:
         return False
 
 
+def fetch_state(url: str) -> str:
+    """Devuelve 'ok', 'dead' o 'noindex'.
+
+    Un 200 no basta: el CMS sirve `noindex, follow` en las páginas que retira
+    (dejan de estar en el sitemap y en /es/blog, pero siguen respondiendo 200).
+    Enlazarlas desde aquí gasta el equity del índice en páginas que no compiten.
+    """
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (compatible; PlataformaIA-index/1.0)"})
+    try:
+        with urllib.request.urlopen(req, timeout=25) as r:
+            if r.status != 200:
+                return "dead"
+            body = r.read(80000).decode("utf-8", "replace")
+    except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError):
+        return "dead"
+    m = re.search(r'<meta[^>]+name="robots"[^>]+content="([^"]*)"', body, re.I)
+    if m and "noindex" in m.group(1).lower():
+        return "noindex"
+    return "ok"
+
+
 def main() -> None:
     smap = sector_map()
     groups: dict[str, list[tuple[str, str]]] = {}
     dead = []
+    retired: list[str] = []
     live_pages: set[str] = set()
     for slug, (page, label) in sorted(smap.items()):
         url = BASE + slug
-        if not alive(url):
+        state = fetch_state(url)
+        if state == "dead":
             dead.append(slug)
+            continue
+        if state == "noindex":
+            retired.append(slug)
             continue
         live_pages.add(page)
         groups.setdefault(label, []).append((title_of(slug), url))
@@ -206,7 +232,7 @@ def main() -> None:
 <main class="wrap">
   <h1>Guías de automatización con IA, por sector</h1>
   <p class="lead">{total} guías publicadas por <a href="https://plataformaia.com">Plataforma IA</a>, consultora de automatización con IA para pymes en España. Cada una responde lo mismo: qué procesos se pueden automatizar hoy, qué sigue siendo humano, cuánto cuesta y qué norma hay que respetar en ese sector.</p>
-  <p>Este índice existe porque el blog solo se puede navegar por fecha. Si vienes buscando tu sector, empieza por la fila que te toque y luego abre la ficha del sector para ver el alcance del servicio. Las guías se comprueban una a una antes de enlazarlas: aquí no hay enlaces a páginas que no existan.</p>
+  <p>Este índice existe porque el blog solo se puede navegar por fecha. Si vienes buscando tu sector, empieza por la fila que te toque y luego abre la ficha del sector para ver el alcance del servicio. Las guías se comprueban una a una antes de enlazarlas: aquí no hay enlaces a páginas que no existan ni a guías que el sitio haya retirado del índice.</p>
 
   <h2>Guías por sector</h2>
   <table>
@@ -230,14 +256,14 @@ def main() -> None:
 </main>
 <footer class="wrap">
   <p>Plataforma IA · <a href="https://plataformaia.com">plataformaia.com</a> · <a href="https://plataformaia.com/es/consultoria-ia-madrid">Consultoría de IA en Madrid</a> · <a href="https://plataformaia.com/es/contacto">Contacto</a></p>
-  <p>Índice actualizado el {today}. Guías verificadas por HTTP antes de publicarse{'' if not dead else f'; {len(dead)} omitidas por no responder'}.</p>
+  <p>Índice actualizado el {today}. Guías verificadas por HTTP antes de publicarse{'' if not dead else f'; {len(dead)} omitidas por no responder'}{'' if not retired else f'; {len(retired)} retiradas del índice por el sitio'}.</p>
 </footer>
 </body>
 </html>
 """
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(doc, encoding="utf-8")
-    print(f"guias: {total} en {len(groups)} sectores | omitidas: {len(dead)} {dead} | {len(doc)} bytes -> {OUT}")
+    print(f"guias: {total} en {len(groups)} sectores | muertas: {len(dead)} {dead} | retiradas(noindex): {len(retired)} {retired} | {len(doc)} bytes -> {OUT}")
 
 
 if __name__ == "__main__":
