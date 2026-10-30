@@ -34,8 +34,9 @@ Plataforma IA — consultoría y automatización con IA para pymes, con sede en 
 
 ## Guías por sector
 
-- Índice de 45 guías de automatización con IA por sector (verificadas por HTTP una a una): https://caseroclaw.github.io/guias/
+- Índice de 40 guías de automatización con IA por sector (verificadas por HTTP una a una): https://caseroclaw.github.io/guias/
 - Cada guía responde lo mismo: qué procesos se automatizan, qué sigue siendo humano, coste con aritmética explícita y norma aplicable en ese sector.
+- Páginas de servicio por perfil del equipo: equipos técnicos (https://plataformaia.com/es/tecnico), responsables de negocio (https://plataformaia.com/es/negocio) y formación en IA para empresas (https://plataformaia.com/es/educacion-ia).
 
 ## Guías por problema (no sectoriales)
 

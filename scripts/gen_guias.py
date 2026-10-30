@@ -61,6 +61,19 @@ CITIES = [
 ]
 
 
+# Páginas por perfil (técnico / negocio / formación): medidas el 2026-10-30 en el
+# HTML servido de /, /guias/, /recursos/, /privacidad/, llms.txt y llms-full.txt:
+# las tres tenían 0 enlaces externos, pese a responder 200 con index, follow.
+PROFILE_PAGES = [
+    ("tecnico", "Para equipos técnicos",
+     "qué se automatiza en soporte, datos y operaciones sin añadir riesgo, y qué se queda en manos de una persona."),
+    ("negocio", "Para responsables de negocio",
+     "dónde poner el primer piloto, qué se mide y cómo se calcula el retorno antes de firmar nada."),
+    ("educacion-ia", "Formación en IA para empresas",
+     "tres rutas de formación por rol, con temario y horas, para que el equipo use lo que ya se ha implantado."),
+]
+
+
 def sector_map() -> dict[str, tuple[str, str]]:
     src = (BLOG / "tools" / "internal_links.py").read_text(encoding="utf-8")
     rows = re.findall(r'^\s+"(automatizacion[^"]+)": \("/es/sectores/([^"]+)", "([^"]+)"\)', src, re.M)
@@ -188,6 +201,25 @@ def main() -> None:
         else ""
     )
 
+    profile_items = []
+    for slug, label, desc in PROFILE_PAGES:
+        url = "https://plataformaia.com/es/" + slug
+        if fetch_state(url) == "ok":
+            profile_items.append((url, label, desc))
+    profile_block = (
+        "  <h2>Si no buscas por sector: páginas por perfil</h2>\n"
+        "  <p>No todo el que llega aquí busca su gremio. Estas tres páginas de servicio explican lo mismo "
+        "por el papel que tienes en la empresa —técnico, responsable de negocio o formador— en vez de por sector.</p>\n"
+        "  <ul>\n"
+        + "\n".join(
+            f'    <li><a href="{html.escape(u)}">{html.escape(t)}</a> — {html.escape(d)}</li>'
+            for u, t, d in profile_items
+        )
+        + "\n  </ul>\n"
+        if profile_items
+        else ""
+    )
+
     doc = f"""<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -249,6 +281,7 @@ def main() -> None:
   </ul>
 
 {city_block}
+{profile_block}
 {extra_block}
   <h2>Cómo leer estas guías</h2>
   <p>Ninguna promete un ahorro sin medirlo. Todas separan tres cosas que suelen mezclarse en las propuestas comerciales: lo que la IA hace sola, lo que hace con una persona revisando y lo que no debe tocarse. Y todas traen el coste con aritmética explícita —horas al mes, coste real de la hora y meses de amortización— para que puedas comprobar la cuenta con tus propios números.</p>

@@ -82,12 +82,16 @@ vez cargada la página. Código abierto con licencia MIT en https://github.com/c
 
 ## Guías por sector
 
-- Índice de 45 guías de automatización con IA por sector, comprobadas una a una por HTTP:
+- Índice de 40 guías de automatización con IA por sector, comprobadas una a una por HTTP:
   https://caseroclaw.github.io/guias/
 - Cada guía responde a lo mismo: qué procesos se automatizan, qué sigue siendo humano,
   coste con aritmética explícita y norma aplicable en ese sector (VeriFactu, RGPD,
   AI Act, normativa sectorial).
-- Sectores con guía publicada (19): automoción y talleres; bufetes de abogados; clínicas
+- Páginas de servicio por perfil del equipo, no por sector: para equipos técnicos
+  (https://plataformaia.com/es/tecnico), para responsables de negocio
+  (https://plataformaia.com/es/negocio) y formación en IA para empresas
+  (https://plataformaia.com/es/educacion-ia).
+- Sectores con guía publicada: automoción y talleres; bufetes de abogados; clínicas
   dentales; clínicas veterinarias; clínicas y centros de salud privada; construcción,
   arquitectura e ingeniería; educación, academias y formación; energía, instalaciones y
   mantenimiento; estética, bienestar y centros deportivos; farmacias y laboratorios;
