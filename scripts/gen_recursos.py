@@ -35,6 +35,10 @@ RAIZ = "https://caseroclaw.github.io/"
 # Grupo editorial por slug. Lo que no esta aqui cae en «Otras guias» y aun asi se
 # publica: el indice no depende de que yo recuerde clasificarlo.
 GROUPS = {
+    "indices": [
+        "automatizacion-ia-pymes-espana-guia-completa-sector",
+        "ia-open-source-pymes-espana-herramientas",
+    ],
     "empezar": [
         "elegir-consultora-automatizacion-ia-espana",
         "geo-pymes",
@@ -67,14 +71,19 @@ GROUPS = {
 }
 
 LABELS = {
+    "indices": ("Índices y comparativas del blog", "la guía completa por sector y la comparativa de herramientas open-source: las dos páginas de referencia que se citan enteras."),
     "empezar": ("Empezar con IA sin equivocarte", "elegir proveedor, saber si el dato esta listo, formar al equipo y calcular si el proyecto se paga."),
     "atender": ("Atender mejor sin ampliar plantilla", "que hace un agente de voz o de WhatsApp, cuanto del volumen absorbe y donde tiene que entrar una persona."),
     "cobrar": ("Cobrar antes y facturar sin sustos", "recordatorios de impago, factura electronica B2B obligatoria y el calendario de VeriFactu."),
     "cumplir": ("Cumplir la normativa que ya esta en vigor", "obligaciones que empiezan a contar en una fecha concreta y que afectan a quien automatiza."),
     "vender": ("Vender con menos trabajo manual", "prospeccion, seguimiento y leads que se pierden por no contestar."),
     "sectores-sueltos": ("Sectores con guia propia fuera del indice sectorial", "transporte, ayuda a domicilio, funerarias y lavanderias: mismos procesos, distinto marco legal."),
-    "otros": ("Otras guias del blog", "articulos publicados que no encajan en los bloques anteriores."),
+    "otros": ("Otras guías del blog", "articulos publicados que no encajan en los bloques anteriores."),
 }
+
+# Paginas del sitemap que no son guias y por tanto no entran en un indice de guias.
+# `politica-editorial` se enlaza desde /privacidad/ (pagina de confianza), no desde aqui.
+EXCLUDE = {"politica-editorial"}
 
 
 def get(url: str) -> str:
@@ -83,14 +92,20 @@ def get(url: str) -> str:
         return r.read().decode("utf-8", "replace")
 
 
-def alive(url: str) -> bool:
+def fetch_state(url: str) -> str:
+    """ok / noindex / dead. Un 200 con `noindex` no es enlazable en un indice."""
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (compatible; PlataformaIA-index/1.0)"})
     try:
-        return urllib.request.urlopen(
-            urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (compatible; PlataformaIA-index/1.0)"}),
-            timeout=25,
-        ).status == 200
+        with urllib.request.urlopen(req, timeout=25) as r:
+            if r.status != 200:
+                return "dead"
+            body = r.read().decode("utf-8", "replace")
     except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError):
-        return False
+        return "dead"
+    m = re.search(r'<meta[^>]+name=["\']robots["\'][^>]+content=["\']([^"\']+)', body, re.I)
+    if m and "noindex" in m.group(1).lower():
+        return "noindex"
+    return "ok"
 
 
 def frontmatter_value(raw: str, field: str) -> str:
@@ -114,7 +129,10 @@ def main() -> None:
     for url in blog:
         if url in guias_html or url in raiz_html:
             continue
-        orphans.append(url.rsplit("/", 1)[-1])
+        slug = url.rsplit("/", 1)[-1]
+        if slug in EXCLUDE:
+            continue
+        orphans.append(slug)
 
     by_group: dict[str, list[tuple[str, str, str]]] = {}
     skipped, missing = [], []
@@ -123,7 +141,7 @@ def main() -> None:
         if not path.exists():
             missing.append(slug)
             continue
-        if not alive(BASE + slug):
+        if fetch_state(BASE + slug) != "ok":
             skipped.append(slug)
             continue
         raw = path.read_text(encoding="utf-8")
@@ -132,7 +150,7 @@ def main() -> None:
         group = next((g for g, slugs in GROUPS.items() if slug in slugs), "otros")
         by_group.setdefault(group, []).append((title, BASE + slug, desc))
 
-    order = ["empezar", "atender", "cobrar", "cumplir", "vender", "sectores-sueltos", "otros"]
+    order = ["indices", "empezar", "atender", "cobrar", "cumplir", "vender", "sectores-sueltos", "otros"]
     total = sum(len(v) for v in by_group.values())
     today = date.today().isoformat()
 
