@@ -285,10 +285,10 @@ def main() -> None:
 {extra_block}
   <h2>Cómo leer estas guías</h2>
   <p>Ninguna promete un ahorro sin medirlo. Todas separan tres cosas que suelen mezclarse en las propuestas comerciales: lo que la IA hace sola, lo que hace con una persona revisando y lo que no debe tocarse. Y todas traen el coste con aritmética explícita —horas al mes, coste real de la hora y meses de amortización— para que puedas comprobar la cuenta con tus propios números.</p>
-  <p>Si tu sector no está, <a href="https://plataformaia.com/es/contacto">escríbenos</a>: la guía se escribe cuando hay una pregunta real que responder, no para llenar el índice.</p>
+  <p>Si tu sector no está, <a href="https://plataformaia.com/contact">escríbenos</a>: la guía se escribe cuando hay una pregunta real que responder, no para llenar el índice.</p>
 </main>
 <footer class="wrap">
-  <p>Plataforma IA · <a href="https://plataformaia.com">plataformaia.com</a> · <a href="https://plataformaia.com/es/consultoria-ia-madrid">Consultoría de IA en Madrid</a> · <a href="https://plataformaia.com/es/contacto">Contacto</a></p>
+  <p>Plataforma IA · <a href="https://plataformaia.com">plataformaia.com</a> · <a href="https://plataformaia.com/es/consultoria-ia-madrid">Consultoría de IA en Madrid</a> · <a href="https://plataformaia.com/contact">Contacto</a></p>
   <p>Índice actualizado el {today}. Guías verificadas por HTTP antes de publicarse{'' if not dead else f'; {len(dead)} omitidas por no responder'}{'' if not retired else f'; {len(retired)} retiradas del índice por el sitio'}.</p>
 </footer>
 </body>

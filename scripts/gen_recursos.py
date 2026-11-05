@@ -221,7 +221,7 @@ def main() -> None:
   <p>Dos herramientas gratuitas que evitan la conversación de venta: la <a href="/roi-automatizacion-ia/">calculadora de ROI</a> pone cifra a un proceso manual con el coste real de la hora y dice en cuántos meses se amortiza; el <a href="/radar-ai-act/">clasificador del AI Act</a> dice si el sistema que quieres implantar es de alto riesgo y qué deberes tienes por tu rol.</p>
 </main>
 <footer class="wrap">
-  <p>Plataforma IA · <a href="https://plataformaia.com">plataformaia.com</a> · <a href="https://plataformaia.com/es/consultoria-ia-madrid">Consultoría de IA en Madrid</a> · <a href="https://plataformaia.com/es/contacto">Contacto</a></p>
+  <p>Plataforma IA · <a href="https://plataformaia.com">plataformaia.com</a> · <a href="https://plataformaia.com/es/consultoria-ia-madrid">Consultoría de IA en Madrid</a> · <a href="https://plataformaia.com/contact">Contacto</a></p>
   <p>Índice actualizado el {today}. {total} guías verificadas por HTTP{'' if not skipped else f'; {len(skipped)} omitidas por no responder'}.</p>
 </footer>
 </body>
